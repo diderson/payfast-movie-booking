@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  # ngnix service 
+  # ngnix:
+  #   image: nginx:stable-alpine
+  #   container_name: ngnix
+  #   ports:
+  #     - '8083:80'
+  #   volumes:
+  #     - ./src:/var/www
+  #     - ./resources/ngnix/default.conf:/etc/ngnix/conf.d/default.conf
+  #   depends_on:
+  #     - php
+  #     - mysql
+  #   networks:
+  #     - movie_booking
+
+  # ubuntu apache service 
+  ubuntu-apache:
+    build:
+      context: .
+      dockerfile: ./docker_src/apache.Dockerfile
+    container_name: apache
+    volumes:
+      - ./src:/data/www
+    privileged: true
+    links:
+      - db
+    ports:
+      - '8083:80'
+    networks:
+      - movie_booking
+
+  # Database service 
+  db:
+    image: 'mysql:5.7.22'
+    container_name: db
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=movie_booking
+    volumes:
+      - ./databases/mysql:/var/lib/mysql:delegated
+    ports:
+      - "3312:3306"
+    networks:
+      - movie_booking
+
+networks:
+  movie_booking:
