@@ -4,19 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMoviesTable extends Migration {
+class CreateBookingStatusTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('movies', function (Blueprint $table) {
+		Schema::create('booking_status', function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('title');
-			$table->text('description')->nullable();
-			$table->string('duration')->nullable();
-			$table->string('genre')->unique()->nullable();
+			$table->string('name');
 			$table->timestamps();
 		});
 	}
@@ -27,6 +24,6 @@ class CreateMoviesTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('movies');
+		Schema::dropIfExists('booking_status');
 	}
 }
