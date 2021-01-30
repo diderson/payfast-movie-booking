@@ -16,6 +16,9 @@ class Booking extends Model {
 	protected $fillable = [
 		'reference_number',
 		'total_seats',
+		'show_id',
+		'user_id',
+		'status_id',
 	];
 
 	/**

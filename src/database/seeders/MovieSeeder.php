@@ -144,7 +144,7 @@ class MovieSeeder extends Seeder {
 			[
 				'movie_id' => 1,
 				'theatre_id' => 3,
-				'start_time' => '2021-03-01 10:00:00',
+				'start_time' => '2021-03-01 10:10:00',
 				'end_time' => '2021-03-01 12:00:00',
 				'created_at' => Carbon::now(),
 				'updated_at' => Carbon::now(),
@@ -152,13 +152,46 @@ class MovieSeeder extends Seeder {
 			[
 				'movie_id' => 2,
 				'theatre_id' => 4,
-				'start_time' => '2021-03-01 10:15:00',
-				'end_time' => '2021-03-01 12:00:00',
+				'start_time' => '2021-03-01 11:00:00',
+				'end_time' => '2021-03-01 13:45:00',
+				'created_at' => Carbon::now(),
+				'updated_at' => Carbon::now(),
+			],
+
+			[
+				'movie_id' => 1,
+				'theatre_id' => 1,
+				'start_time' => '2021-03-01 15:00:00',
+				'end_time' => '2021-03-01 17:00:00',
+				'created_at' => Carbon::now(),
+				'updated_at' => Carbon::now(),
+			],
+			[
+				'movie_id' => 2,
+				'theatre_id' => 2,
+				'start_time' => '2021-03-01 15:15:00',
+				'end_time' => '2021-03-01 17:00:00',
+				'created_at' => Carbon::now(),
+				'updated_at' => Carbon::now(),
+			],
+			[
+				'movie_id' => 1,
+				'theatre_id' => 3,
+				'start_time' => '2021-03-01 15:10:00',
+				'end_time' => '2021-03-01 17:00:00',
+				'created_at' => Carbon::now(),
+				'updated_at' => Carbon::now(),
+			],
+			[
+				'movie_id' => 2,
+				'theatre_id' => 4,
+				'start_time' => '2021-03-01 16:00:00',
+				'end_time' => '2021-03-01 18:45:00',
 				'created_at' => Carbon::now(),
 				'updated_at' => Carbon::now(),
 			],
 		];
 
-		DB::table('show')->insert($shows);
+		DB::table('shows')->insert($shows);
 	}
 }

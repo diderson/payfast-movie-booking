@@ -11,7 +11,7 @@ class CreateShowTable extends Migration {
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('show', function (Blueprint $table) {
+		Schema::create('shows', function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('movie_id')->unsigned();
 			$table->foreign('movie_id')->references('id')->on('movies')
@@ -35,10 +35,10 @@ class CreateShowTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::table('show', function (Blueprint $table) {
+		Schema::table('shows', function (Blueprint $table) {
 			$table->dropForeign('show_movie_id_foreign');
 			$table->dropForeign('show_theatre_id_foreign');
 		});
-		Schema::dropIfExists('show');
+		Schema::dropIfExists('shows');
 	}
 }

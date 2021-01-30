@@ -17,7 +17,7 @@ class CreateBookingsTable extends Migration {
 			$table->integer('total_seats');
 
 			$table->integer('show_id')->unsigned();
-			$table->foreign('show_id')->references('id')->on('show')
+			$table->foreign('show_id')->references('id')->on('shows')
 				->onDelete('restrict')
 				->onUpdate('cascade');
 

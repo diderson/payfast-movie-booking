@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Show extends Model {
 	use HasFactory;
 
+	protected $table = 'shows';
+
 	/**
 	 * The attributes that are mass assignable.
 	 *

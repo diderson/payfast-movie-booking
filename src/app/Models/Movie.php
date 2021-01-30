@@ -35,8 +35,8 @@ class Movie extends Model {
 	/**
 	 *  Get the shows that has movie
 	 */
-	public function shows() {
-		return $this->belongsToMany('App\Models\Show');
+	public function movie_shows() {
+		return $this->hasMany('App\Models\Show');
 	}
 
 }
