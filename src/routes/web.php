@@ -32,8 +32,19 @@ Route::get('home', function () {
 	return view('home');
 });
 
-Route::get('/dashboard', function () {
-	return view('dashboard');
+require __DIR__ . '/auth.php';
+
+/**
+ * Admin Route
+ */
+
+Route::get('/admin/dashboard', function () {
+	return view('admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__ . '/auth.php';
+// Route::get('/admin/movies', 'Admin\AdminMovieController@index')->middleware('auth')->name('admin.movie');
+// Route::get('/admin/movie-edit/{$id}', 'Admin\AdminMovieController@edit')->middleware('auth')->name('admin.movie.edit');
+// Route::get('/admin/movie-edit', 'Admin\AdminMovieController@edit')->middleware('auth')->name('admin.movie.edit');
+
+//crud movies
+Route::resource('/admin/movies', 'Admin\AdminMovieController');
