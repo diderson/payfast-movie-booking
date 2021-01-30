@@ -16,7 +16,7 @@ class CreateMoviesTable extends Migration {
 			$table->string('title');
 			$table->text('description')->nullable();
 			$table->string('duration')->nullable();
-			$table->string('genre')->unique()->nullable();
+			$table->string('genre')->nullable();
 			$table->timestamps();
 		});
 	}

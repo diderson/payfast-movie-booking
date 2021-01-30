@@ -22,23 +22,48 @@
 		<button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 	</div>
 	@endif
-	<div class="row mb-3">
-		<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
-		<div class="col-sm-10">
-			<input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
-		</div>
-	</div>
-	<div class="row mb-3">
-		<label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
-		<div class="col-sm-10">
-			<input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">
-		</div>
-	</div>
+	{!! Form::open(['url' => '/admin/movies', 'class'=>'form-horizontal', 'method' => 'post', 'id'=>'movie-create', 'files' => true]) !!}
 	<div class="row">
-		<label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
-		<div class="col-sm-10">
-			<input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg">
-		</div>
-	</div>
-</main>
-@endsection
+		<div class="col-sm-6">
+			<div class="row mb-3">
+				<label for="colFormLabel" class="col-sm-2 col-form-label">Title</label>
+				<div class="col-sm-10">
+					<input type="text"  name="title" class="form-control" id="title" placeholder="Title">
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="colFormLabel" class="col-sm-2 col-form-label">Genre</label>
+				<div class="col-sm-10">
+					<input type="text" name="genre" class="form-control" id="genre" placeholder="Genre">
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="colFormLabel" class="col-sm-2 col-form-label">Duration</label>
+				<div class="col-sm-10">
+					<input type="text" name="duration" class="form-control" id="duration" placeholder="Duration">
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="colFormLabel" class="col-sm-2 col-form-label">Description</label>
+				<div class="col-sm-10">
+					<textarea name="description" class="form-control" rows="5"></textarea>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="colFormLabel" class="col-sm-2 col-form-label">Image</label>
+				<div class="col-sm-10">
+					<input id="image_url" type="file" name="image_url" id="image_url" class="form-control">
+				</div>
+			</div>
+			<div class="card-footer">
+				<button class="btn btn-sm btn-primary" type="submit">
+					<i class="fa fa-dot-circle-o"></i> Submit</button>
+					<button class="btn btn-sm btn-danger" type="reset">
+						<i class="fa fa-ban"></i> Reset</button>
+					</div>
+				</div>
+			</div>
+			<!-- /.row-->
+			{!! Form::close() !!}
+		</main>
+		@endsection

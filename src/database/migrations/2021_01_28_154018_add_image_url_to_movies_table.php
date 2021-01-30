@@ -12,7 +12,7 @@ class AddImageUrlToMoviesTable extends Migration {
 	 */
 	public function up() {
 		Schema::table('movies', function (Blueprint $table) {
-			$table->string('image_url')->after('slug');
+			$table->string('image_url')->nullable()->after('slug');
 		});
 	}
 

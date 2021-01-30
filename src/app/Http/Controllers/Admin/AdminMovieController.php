@@ -2,7 +2,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateSimpleRequest;
 use App\Models\Movie;
+use Illuminate\Support\Str;
 
 class AdminMovieController extends Controller {
 	public $pagination = 20;
@@ -45,10 +47,29 @@ class AdminMovieController extends Controller {
 	 */
 	public function store(CreateSimpleRequest $request) {
 		// $this->validate($request, [
-		//     'name' => 'required'
+		//     'tiele' => 'required'
 		// ]);
 
-		$movie = Movie::create($request->all());
+		$data = $request->all();
+
+		$data['slug'] = Str::slug($data['title']);
+
+		if ($request->hasFile('image_url')) {
+			$allowedfileExtension = ['jpg', 'jpeg', 'png'];
+			$file = $request->file('image_url');
+
+			$Filename = $file->getClientOriginalName();
+			$extension = $file->getClientOriginalExtension();
+			$check = in_array($extension, $allowedfileExtension);
+			$newFilename = time() . time() . '_' . $Filename;
+
+			$filePath = $request->file('image_url')->storeAs('movie', $newFilename, 'movie');
+
+			$data['image_url'] = '/images/movie/' . $newFilename;
+
+		}
+
+		$movie = Movie::create($data);
 
 		session()->flash('success', "Movie with ID {$movie->id} was created!");
 

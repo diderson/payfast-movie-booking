@@ -12,7 +12,7 @@ class AddSlugToMoviesTable extends Migration {
 	 */
 	public function up() {
 		Schema::table('movies', function (Blueprint $table) {
-			$table->string('slug')->after('title');
+			$table->string('slug')->unique()->after('title');
 			$table->unique('slug', 'unique_slug');
 		});
 	}

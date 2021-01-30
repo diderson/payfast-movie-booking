@@ -76,7 +76,7 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">
-								<span data-feather="users"></span>
+								<span data-feather="file-text"></span>
 								Shows
 							</a>
 						</li>
@@ -94,7 +94,7 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">
-								<span data-feather="file-text"></span>
+								<span data-feather="users"></span>
 								Administrators
 							</a>
 						</li>
