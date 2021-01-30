@@ -4,8 +4,6 @@ namespace App\Payfast\Interfaces;
 
 interface BookingRepositoryInterface {
 
-	public function findByUserId($user_id);
-
 	public function findAllByUserId($user_id, $limit = null);
 
 	public function store($data);

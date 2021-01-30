@@ -9,13 +9,6 @@ use Exception;
 
 class EloquentBookingRepository implements BookingRepositoryInterface {
 
-	public function findByUserId($userId) {
-		$bookings = Booking::whereHas('users', function ($query) use ($userId) {
-			$query->where('users.id', $userId);
-		})->get();
-		return $bookings;
-	}
-
 	public function findAllByUserId($user_id, $limit = null) {
 		$bookings = DB::table('bookings as b')
 			->join('shows as s', 's.id', '=', 'b.show_id')

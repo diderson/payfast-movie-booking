@@ -31,7 +31,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
+					<li class="nav-item {{  Request::path() == '/' ? 'active' : '' }}">
 						<a class="nav-link" href="/">Home
 							<span class="sr-only">(current)</span>
 						</a>
@@ -45,7 +45,7 @@
 					</li>
 					@else
 					<li class="nav-item">
-						<a class="nav-link" href="/my-booking">My Booking</a>
+						<a class="nav-link {{  Request::path() == 'my-booking' ? 'active' : '' }}" href="/my-booking">My Booking</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -79,7 +79,7 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark">
 	<div class="container">
-		<p class="m-0 text-center text-white">Copyright &copy; Movie booking - payfast {{date('Y')}}</p>
+		<p class="m-0 text-center text-white">Copyright &copy; Movie booking - Didi Baka {{date('Y')}}</p>
 	</div>
 	<!-- /.container -->
 </footer>
