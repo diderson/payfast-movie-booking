@@ -8,7 +8,6 @@ src/node_modules
 /src/.env.php
 /src/.DS_Store
 /src/Thumbs.db
-/src/storage
 /src/public/uploads
 /src/Homestead.yaml/src/
 /src/public/images/movies

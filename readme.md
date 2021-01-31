@@ -1,6 +1,8 @@
 # Movie Booking Application
 
-Built using Laravel Framework in order to speed up the development. Simple booking system for movie ticket
+Built using Laravel 8 Framework/ HTML / CSS / JS / and MySQL. Simple booking system for movie ticket
+
+you can demo at: http://payfast.dipatek.net/
 
 ## Local Development
 
@@ -44,8 +46,8 @@ run the app from `src` folder: php artisan serve
 
 always run artisan command from src folder:
 
-- npm install
-- npm run dev
+- npm install (optional)
+- npm run dev (optional)
 - install dummy data: `php artisan migrate:fresh --seed`
 
 ## Generale Note
