@@ -29,6 +29,6 @@ class Theatre extends Model {
 	 *  Get all the shows for the theatre
 	 */
 	public function shows() {
-		return $this->hasMany('App\Models\Show');
+		return $this->belongsToMany('App\Models\Show');
 	}
 }

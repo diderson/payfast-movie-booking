@@ -10,6 +10,10 @@
 
 	<!-- Bootstrap core CSS -->
 	<link href="/admin/dist/css/bootstrap.css" rel="stylesheet">
+	<link href="/css/dataTables.bootstrap4.css" rel="stylesheet">
+	<link href="/css/daterangepicker.min.css" rel="stylesheet">
+    <link href="/css/select2.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/sweetalert2.min.css" id="theme-styles">
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
 
 	<style>
@@ -63,53 +67,59 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link {{  Request::path() == 'admin/movies' ? 'active' : '' }}" href="/admin/movies">
+							<a class="nav-link {{  isset($page ) && $page == 'movies' ? 'active' : '' }}" href="/admin/movies">
 								<span data-feather="file"></span>
 								Movies
 							</a>
 						</li>
-						<li class="nav-item">
+						{{-- <li class="nav-item">
 							<a class="nav-link" href="#">
 								<span data-feather="shopping-cart"></span>
 								Bookings
 							</a>
-						</li>
+						</li> --}}
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link {{  isset($page ) && $page == 'shows' ? 'active' : '' }}" href="/admin/shows">
 								<span data-feather="file-text"></span>
 								Shows
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">
+						 <li class="nav-item">
+							<a class="nav-link {{  isset($page ) && $page == 'theatres' ? 'active' : '' }}" href="/admin/theatres">
 								<span data-feather="bar-chart-2"></span>
-								Theatre
+								Theatres
 							</a>
 						</li>
+
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link {{  isset($page ) && $page == 'locations' ? 'active' : '' }}" href="/admin/locations">
 								<span data-feather="layers"></span>
 								Locations
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">
+							<a class="nav-link {{  isset($page ) && $page == 'users' ? 'active' : '' }}" href="/admin/users">
 								<span data-feather="users"></span>
-								Administrators
+								Users
 							</a>
 						</li>
 					</ul>
-
-
 				</div>
 			</nav>
 
 			@yield('content')
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="/vendor/jquery/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="/admin/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/admin/dist/js/bootstrap.bundle.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-	<script src="/admin/dashboard.js"></script></body>
-	</html>
+	<script src="/js/sweetalert2.min.js"></script>
+	<script src="/js/moment.min.js"></script>
+	<script src="/js/select2.min.js"></script>
+	<script src="/js/daterangepicker.js?"></script>
+	<script src="/js/dataTables.min.js"></script>
+	<script src="/js/dataTables.bootstrap4.min.js"></script>
+	<script src="/js/didi.js?v={{date('YmmddHis')}}"></script>
+	@yield('javascript')
+</body>
+</html>

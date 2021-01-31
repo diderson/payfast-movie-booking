@@ -5,10 +5,6 @@
     <h1 class="h2">{{$page_list_title}}</h1> <a href="{{$add_link}}" class="btn btn-primary">{{$page_add_title}}</a>
   </div>
 
-
-
-  <!-- <h2>Movies</h2> -->
-
   @if (session('success'))
   <div class="alert alert-success alert-dismissible fade show" role="alert">
     {{ session('success') }}
@@ -22,8 +18,8 @@
     <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
   </div>
   @endif
-  <div class="table-responsive">
-    <table class="table table-striped table-sm" id="list_table">
+  <div class="table-responsive" id="list-page-datatable">
+    <table class="table table-striped table-sm datatable" id="list_table">
       <thead>
         <tr>
           <th>#</th>
@@ -51,7 +47,7 @@
               <span class="sr-only">Modify</span><i class="fa fa-pencil"></i>
             </a>
 
-            <a class="btn btn-danger btn-sm item-remove" href="#" data-token="{{ csrf_token() }}" data-link="/departments/{{$data->id}}">
+            <a class="btn btn-danger btn-sm item-remove" href="#" data-token="{{ csrf_token() }}" data-link="/admin/movies/{{$data->id}}">
               <span class="sr-only">Remove</span><i class="fa fa-trash"></i>
             </a>
           </td>
@@ -61,4 +57,11 @@
     </table>
   </div>
 </main>
+@endsection
+@section('javascript')
+<script>
+$(function() {
+
+ });
+</script>
 @endsection

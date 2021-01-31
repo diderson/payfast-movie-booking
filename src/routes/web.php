@@ -18,6 +18,7 @@ Route::get('/', 'MovieController@index');
 Route::get('/movie/{slug}', 'MovieController@show');
 Route::get('/get-show-time/{location_id}/movie/{movie_id}', 'MovieController@getShowTime');
 Route::get('/get-available-seat/{location_id}/show/{show_id}', 'MovieController@getAvailableSeat');
+Route::get('/get-theatre/{location_id}', 'MovieController@getTheatreByLocation');
 
 Route::post('/booking-next-step', 'BookingController@create');
 Route::get('/booking-next-step', 'BookingController@create');
@@ -42,9 +43,17 @@ Route::get('/admin/dashboard', function () {
 	return view('admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-// Route::get('/admin/movies', 'Admin\AdminMovieController@index')->middleware('auth')->name('admin.movie');
-// Route::get('/admin/movie-edit/{$id}', 'Admin\AdminMovieController@edit')->middleware('auth')->name('admin.movie.edit');
-// Route::get('/admin/movie-edit', 'Admin\AdminMovieController@edit')->middleware('auth')->name('admin.movie.edit');
-
 //crud movies
 Route::resource('/admin/movies', 'Admin\AdminMovieController');
+
+//crud users
+Route::resource('/admin/users', 'Admin\AdminUserController');
+
+//crud shows
+Route::resource('/admin/shows', 'Admin\AdminShowController');
+
+//crud locations
+Route::resource('/admin/locations', 'Admin\AdminCinemaLocationController');
+
+//crud theatres
+Route::resource('/admin/theatres', 'Admin\AdminTheatreController');

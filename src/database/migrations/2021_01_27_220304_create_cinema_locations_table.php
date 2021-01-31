@@ -13,7 +13,7 @@ class CreateCinemaLocationsTable extends Migration {
 	public function up() {
 		Schema::create('cinema_locations', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('cinema_id')->unsigned();
+			$table->integer('cinema_id')->unsigned()->nullable();
 			$table->foreign('cinema_id')->references('id')->on('cinemas')
 				->onDelete('restrict')
 				->onUpdate('cascade');

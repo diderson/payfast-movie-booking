@@ -15,9 +15,9 @@ class CreateTheatresTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 
-			$table->integer('location_id')->unsigned();
+			$table->integer('location_id')->unsigned()->nullable();
 			$table->foreign('location_id')->references('id')->on('cinema_locations')
-				->onDelete('restrict')
+				->onDelete('cascade')
 				->onUpdate('cascade');
 
 			$table->integer('total_seats')->default(0);

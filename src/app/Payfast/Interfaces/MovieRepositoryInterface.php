@@ -14,6 +14,8 @@ interface MovieRepositoryInterface {
 
 	public function getMovieShowTotalBookedSeats($show_id);
 
+	public function getTheatreTotalSeats($location_id);
+
 	public function getCurrentShowingMovies();
 
 	public function update($id, $data);

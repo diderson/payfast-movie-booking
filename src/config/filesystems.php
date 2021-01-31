@@ -42,7 +42,7 @@ return [
 			'visibility' => 'public',
 		],
 
-		'movie' => [
+		'movie_upload' => [
 			'driver' => 'local',
 			'root' => base_path() . '/public/images',
 			'visibility' => 'public',

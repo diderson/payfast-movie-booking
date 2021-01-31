@@ -23,6 +23,10 @@ class CustomLoginController extends Controller {
 				return redirect($referrer);
 			}
 
+			if (auth()->user()->hasRole(['super-admin', 'admin'])) {
+				return redirect('/admin/dashboard');
+			}
+
 			return redirect()->intended('/');
 		}
 

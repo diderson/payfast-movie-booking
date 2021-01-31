@@ -5,7 +5,6 @@
 		<h1 class="h2">{{$page_add_title}}</h1>
 	</div>
 
-
 	@if (session('success'))
 	<div class="alert alert-success alert-dismissible fade show" role="alert">
 		{{ session('success') }}
@@ -19,39 +18,32 @@
 		<button class="close" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 	</div>
 	@endif
-	{!! Form::open(['url' => '/admin/movies', 'class'=>'form-horizontal', 'method' => 'post', 'id'=>'movie-create', 'files' => true]) !!}
+	{!! Form::open(['url' => '/admin/theatres', 'class'=>'form-horizontal', 'method' => 'post', 'id'=>'user-create', 'files' => true]) !!}
 	<div class="row">
 		<div class="col-sm-6">
 			<div class="row mb-3">
-				<label for="colFormLabel" class="col-sm-2 col-form-label">Title</label>
+				<label for="colFormLabel" class="col-sm-2 col-form-label">Name</label>
 				<div class="col-sm-10">
-					<input type="text"  name="title" class="form-control" id="title" placeholder="Title">
+					<input type="text"  name="name" class="form-control" id="name" placeholder="Name">
 				</div>
 			</div>
+
 			<div class="row mb-3">
-				<label for="colFormLabel" class="col-sm-2 col-form-label">Genre</label>
+				<label for="colFormLabel" class="col-sm-2 col-form-label">Seats</label>
 				<div class="col-sm-10">
-					<input type="text" name="genre" class="form-control" id="genre" placeholder="Genre">
+					<input type="number"  name="total_seats" class="form-control" id="total_seats" placeholder="Number of Seats" >
 				</div>
 			</div>
+
 			<div class="row mb-3">
-				<label for="colFormLabel" class="col-sm-2 col-form-label">Duration</label>
+				<label for="colFormLabel" class="col-sm-2 col-form-label">Location</label>
 				<div class="col-sm-10">
-					<input type="text" name="duration" class="form-control" id="duration" placeholder="Duration">
+					{{ Form::select('location_id', $locations, '', array_merge(['class' => 'form-control'], ['placeholder' => 'Select Location...'])) }}
 				</div>
 			</div>
-			<div class="row mb-3">
-				<label for="colFormLabel" class="col-sm-2 col-form-label">Description</label>
-				<div class="col-sm-10">
-					<textarea name="description" class="form-control" rows="5"></textarea>
-				</div>
-			</div>
-			<div class="row mb-3">
-				<label for="colFormLabel" class="col-sm-2 col-form-label">Image</label>
-				<div class="col-sm-10">
-					<input id="image_url" type="file" name="image_url" id="image_url" class="form-control">
-				</div>
-			</div>
+
+        </div>
+      </div>
 			<div class="card-footer">
 				<button class="btn btn-sm btn-primary" type="submit">
 					<i class="fa fa-dot-circle-o"></i> Submit</button>

@@ -48,3 +48,18 @@ always run artisan command from src folder:
 - npm run dev
 - install dummy data: `php artisan migrate:fresh --seed`
 
+## Generale Note
+
+There is 3 users with different role will be created after running a first migration seed
+
+1. super_admin: 
+- username: ddiderson@gmail.com password: password
+
+2. admin: 
+- username: didi@gmail.com password: 123456
+
+3. customer: 
+- username: larry@gmail.com password: 123456
+
+feel free to create your own user and assign permissions or you can register from the refistration form and default role will customer.
+

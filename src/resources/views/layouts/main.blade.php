@@ -13,7 +13,7 @@
 
 	<!-- Bootstrap core CSS -->
 	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/sweetalert2.min.css" id="theme-styles">
+	<link rel="stylesheet" href="/css/sweetalert2.min.css" id="theme-styles">
 
 	<!-- Custom styles for this template -->
 	<link href="/css/style.css" rel="stylesheet">
@@ -47,6 +47,11 @@
 					<li class="nav-item">
 						<a class="nav-link {{  Request::path() == 'my-booking' ? 'active' : '' }}" href="/my-booking">My Booking</a>
 					</li>
+					@if(Auth::user()->hasRole(['admin', 'super-admin']))
+					<li class="nav-item">
+						<a class="nav-link" href="/admin/dashboard">Admin</a>
+					</li>
+					@endif
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							| Hi {{ Auth::user()->name }}

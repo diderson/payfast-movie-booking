@@ -18,7 +18,7 @@ class CreateBookingsTable extends Migration {
 
 			$table->integer('show_id')->unsigned();
 			$table->foreign('show_id')->references('id')->on('shows')
-				->onDelete('restrict')
+				->onDelete('cascade')
 				->onUpdate('cascade');
 
 			$table->integer('user_id')->unsigned()->index();
@@ -26,8 +26,8 @@ class CreateBookingsTable extends Migration {
 
 			$table->integer('status_id')->unsigned();
 			$table->foreign('status_id')->references('id')->on('booking_status')
-				->onDelete('restrict')
-				->onUpdate('restrict');
+				->onDelete('cascade')
+				->onUpdate('cascade');
 
 			$table->timestamps();
 		});

@@ -40,4 +40,8 @@ class Movie extends Model {
 		return $this->hasMany('App\Models\Show');
 	}
 
+	public function theatres() {
+		return $this->belongsToMany('App\Models\Theatre');
+	}
+
 }

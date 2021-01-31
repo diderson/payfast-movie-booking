@@ -11,6 +11,7 @@ src/node_modules
 /src/storage
 /src/public/uploads
 /src/Homestead.yaml/src/
+/src/public/images/movies
 Homestead.json
 /src/.env
 /src/.env.*

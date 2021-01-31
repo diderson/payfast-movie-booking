@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use App\Models\Show;
+use App\Models\Theatre;
 use App\Payfast\Interfaces\BookingRepositoryInterface;
 use App\Payfast\Interfaces\MovieRepositoryInterface;
 use App\Traits\GenerateBookingNumber;
-use DB;
 use Illuminate\Http\Request;
 use Response;
 
@@ -102,19 +102,10 @@ class MovieController extends Controller {
 	public function getAvailableSeat(Request $request, $location_id, $show_id) {
 
 		$results = ['0' => 'Ticket not available'];
-		$total_seats = 0;
-		$theatre = DB::table('cinema_locations as c')
-			->join('theatres as t', 't.location_id', '=', 'c.id')
-			->select('t.total_seats')
-			->where('t.location_id', $location_id)
-			->first();
-
-		if ($theatre) {
-			$total_seats = $theatre->total_seats;
-		}
 
 		//calculating available seat for the show in the theatre
 		if ($request->ajax()) {
+			$total_seats = $this->movieRepository->getTheatreTotalSeats($location_id);
 			$show_total_seats = $this->movieRepository->getMovieShowTotalBookedSeats($show_id);
 
 			# constructing the dropdown list for avaibale seat
@@ -129,6 +120,23 @@ class MovieController extends Controller {
 		}
 
 		return Response::json($results);
+	}
+
+	/**
+	 * get Theatre in a location
+	 *
+	 * @param  \Illuminate\Http\Request  $location_id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function getTheatreByLocation(Request $request, $location_id) {
+		$result = [];
+
+		if ($request->ajax()) {
+			$theatre_data = Theatre::where('location_id', $location_id)->get();
+			$result = $theatre_data->pluck('name', 'id');
+		}
+
+		return Response::json($result);
 	}
 
 	/**

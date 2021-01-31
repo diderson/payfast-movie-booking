@@ -13,12 +13,12 @@ class CreateShowTable extends Migration {
 	public function up() {
 		Schema::create('shows', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('movie_id')->unsigned();
+			$table->integer('movie_id')->unsigned()->nullable();
 			$table->foreign('movie_id')->references('id')->on('movies')
 				->onDelete('restrict')
 				->onUpdate('cascade');
 
-			$table->integer('theatre_id')->unsigned();
+			$table->integer('theatre_id')->unsigned()->nullable();
 			$table->foreign('theatre_id')->references('id')->on('theatres')
 				->onDelete('restrict')
 				->onUpdate('cascade');

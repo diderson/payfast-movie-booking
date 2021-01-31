@@ -40,7 +40,7 @@ class EloquentMovieRepository implements MovieRepositoryInterface {
 		$show_time_data = DB::table('shows as s')
 			->join('theatres as t', 't.id', '=', 's.theatre_id')
 			->join('cinema_locations as l', 'l.id', '=', 't.location_id')
-			->select('s.id', DB::raw("DATE_FORMAT(s.start_time,'%H:%i') AS time"))
+			->select('s.id', DB::raw("CONCAT(DATE_FORMAT(s.start_time,'%d-%m-%Y'), ' ', DATE_FORMAT(s.start_time,'%H:%i')) AS time"))
 			->where('s.movie_id', '=', $movie_id)
 			->where('t.location_id', '=', $location_id)
 			->groupBy('s.id', 'time')
@@ -88,6 +88,21 @@ class EloquentMovieRepository implements MovieRepositoryInterface {
 
 		return $show_total_seats;
 
+	}
+
+	public function getTheatreTotalSeats($location_id) {
+		$total_seats = 0;
+		$theatre = DB::table('cinema_locations as c')
+			->join('theatres as t', 't.location_id', '=', 'c.id')
+			->select('t.total_seats')
+			->where('t.location_id', $location_id)
+			->first();
+
+		if ($theatre) {
+			$total_seats = $theatre->total_seats;
+		}
+
+		return $total_seats;
 	}
 
 	/**

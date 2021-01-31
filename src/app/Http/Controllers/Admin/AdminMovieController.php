@@ -46,14 +46,32 @@ class AdminMovieController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(CreateSimpleRequest $request) {
-		// $this->validate($request, [
-		//     'tiele' => 'required'
-		// ]);
 
 		$data = $request->all();
 
 		$data['slug'] = Str::slug($data['title']);
+		$data['image_url'] = $this->updaloadMovieCover($request);
 
+		$movie = Movie::create($data);
+
+		session()->flash('success', "Movie with ID {$movie->id} was created!");
+
+		return redirect('/admin/movies');
+	}
+
+	/**
+	 * uploade image for the movie
+	 *
+	 * @param  int  $request
+	 * @return image full path
+	 */
+	private function updaloadMovieCover($request) {
+		$imageFullPath = '';
+
+		/* we are currently saving images on local but best practice is to use
+			cloud solution etc such s3 or dropbox etc
+			this function can also be put in a train in order to be used globally
+		*/
 		if ($request->hasFile('image_url')) {
 			$allowedfileExtension = ['jpg', 'jpeg', 'png'];
 			$file = $request->file('image_url');
@@ -63,17 +81,14 @@ class AdminMovieController extends Controller {
 			$check = in_array($extension, $allowedfileExtension);
 			$newFilename = time() . time() . '_' . $Filename;
 
-			$filePath = $request->file('image_url')->storeAs('movie', $newFilename, 'movie');
+			$filePath = $request->file('image_url')->storeAs('movies', $newFilename, 'movie_upload');
 
-			$data['image_url'] = '/images/movie/' . $newFilename;
+			$imageFullPath = '/images/movies/' . $newFilename;
 
 		}
 
-		$movie = Movie::create($data);
+		return $imageFullPath;
 
-		session()->flash('success', "Movie with ID {$movie->id} was created!");
-
-		return redirect('/admin/movies');
 	}
 
 	/**
@@ -109,7 +124,13 @@ class AdminMovieController extends Controller {
 	 */
 	public function update(CreateSimpleRequest $request, $id) {
 		$movie = Movie::findOrFail($id);
-		$movie->update($request->all());
+
+		$data = $request->all();
+
+		$data['slug'] = Str::slug($data['title']);
+		$data['image_url'] = $this->updaloadMovieCover($request);
+
+		$movie->update($data);
 
 		session()->flash('success', "Movie with ID {$movie->id} was updated!");
 
@@ -130,7 +151,7 @@ class AdminMovieController extends Controller {
 
 	public function pageMetaData() {
 		return [
-			'page' => 'movie',
+			'page' => 'movies',
 			'page_html_title' => 'Movie',
 			'pagination' => 20,
 			'page_list_title' => 'Movie List',
