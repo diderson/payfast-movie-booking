@@ -18,7 +18,7 @@ From the root directory boot the application. If you get a **permissions** error
 ```sh
 docker-compose up -d or docker-compose up to monitor the containers
 ```
-** for the firsy setup on local u may want to seed data so ssh the apache container then poit to www and run the necessary codes
+For the first setup on local You may want to seed data. to do so , ssh the apache container then point to www and run the necessary commands.
 
 `docker exec -it apache bash` and `cd www`
 
