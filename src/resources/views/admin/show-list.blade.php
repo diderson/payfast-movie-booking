@@ -43,7 +43,11 @@
 							<img src="{{$data->movie->image_url}}" width="30">
 						@endif
 					</td>
-					<td>{{$data->movie->title}}</td>
+					<td>
+						@if($data->movie)
+						{{$data->movie->title}}
+						@endif
+					</td>
 					<td>{{ Carbon\Carbon::parse($data->start_time)->format('d M Y')}} </td>
 					<td>{{ Carbon\Carbon::parse($data->start_time)->format('H:i')}}</td>
 					<td>{{ Carbon\Carbon::parse($data->end_time)->format('H:i')}}</td>
