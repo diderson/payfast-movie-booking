@@ -38,19 +38,23 @@
 				@foreach ($list as $key => $data)
 				<tr id="list_row_{{$data->id}}">
 					<td>{{$data->id}}</td>
-					<td><img src="{{$data->movie->image_url}}" width="30"></td>
+					<td>
+						@if($data->movie)
+							<img src="{{$data->movie->image_url}}" width="30">
+						@endif
+					</td>
 					<td>{{$data->movie->title}}</td>
 					<td>{{ Carbon\Carbon::parse($data->start_time)->format('d M Y')}} </td>
 					<td>{{ Carbon\Carbon::parse($data->start_time)->format('H:i')}}</td>
 					<td>{{ Carbon\Carbon::parse($data->end_time)->format('H:i')}}</td>
 					<td>
-						{{$data->theatre->location->name}}
+						@if($data->theatre){{$data->theatre->location->name}}@endif
 					</td>
 					<td>
-						{{$data->theatre->name}}
+						@if($data->theatre){{$data->theatre->name}}@endif
 					</td>
 					<td>
-						{{$data->theatre->total_seats}}
+						@if($data->theatre){{$data->theatre->total_seats}}@endif
 					</td>
 					<td class="action">
 						<a class="btn btn-primary btn-sm" href="{{route('shows.edit', $data->id)}}">
