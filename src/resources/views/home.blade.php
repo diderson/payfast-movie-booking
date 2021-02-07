@@ -24,7 +24,9 @@
 		</div>
 	</div>
 	@endforeach
-
 </div>
 <!-- /.row -->
+@endsection
+
+@section('javascript')
 @endsection

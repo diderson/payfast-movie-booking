@@ -31,6 +31,12 @@ class MovieController extends Controller {
 		//get movies that has show currently running
 		$movies = $this->movieRepository->getCurrentShowingMovies();
 
+		/*
+			* Codes sample for my test
+		*/
+
+		//exit('diderson baka');
+
 		return view('home', compact('movies'));
 	}
 

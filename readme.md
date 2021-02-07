@@ -61,7 +61,7 @@ There is 3 users with different role will be created after running a first migra
 - username: `didi@gmail.com` password: `123456`
 
 3. customer: 
-- username: `arry@gmail.com` password: `123456`
+- username: `larry@gmail.com` password: `123456`
 
 feel free to create your own user and assign permissions or you can register from the refistration form and default role will customer.
 
